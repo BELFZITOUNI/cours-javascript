@@ -283,7 +283,7 @@
         }
 
 
-        // if et AND 
+        // if et AND (&&) 
         if(a > b && b > c){
             document.write('ok pour les deux conditions <br>');
         }
@@ -389,8 +389,6 @@
         else{
             document.write('vous aimez aucune couleur <br>');
         }
-
-
          
 
 
@@ -445,27 +443,98 @@
 
 
 
-
-
-        /*---------------------------------------------------
-                -------------10LES BOUCLES ----------
-                ----------------------------------------------------*/
+        /*----------------------------------------------------------
+        ----------------------10 LES BOUCLES -----------------------
+        -----------------------------------------------------------*/
 
         document.write('<h2> 10 - LES BOUCLES </h2>');
 
         var i = 0;
-        while (i <= 5){
-            document.write((i+1) + '---');
+        while (i <= 6){
+            if(i === 6){
+                document.write(i+'<br>');
+            }
+            else{
+                document.write(i + '---');
+            }            
             i++; // i = i+1 // i++ permet d'incrémenter ma variable
         }
 
+        for(var p=0; p <=6; p++ ){
+            if(p === 6){
+                document.write(p+'<br>');
+            }
+            else{
+                document.write(p + '---');
+            }                        
+        }
+
+        /*----------------------------------------------------------
+        ----------------------11 FONCTIONS PREDEFINIES -------------
+        -----------------------------------------------------------*/
+
+        document.write('<h2> 11 - FONCTIONS PREDEFINIES </h2>');
+
+        /* Comme tous les langague de programmation JS possède des fonctions. 
+           Ce sont des morceaux de code encapsulés qu'on applele au besoin pour executer une action précise.
+           On distingue les fonctions prédéfinies et les fonctions utilisateurs
+        */ 
+        // Déclaration d'une variable phrase
+        var phrase ='Salut, je m\'appelle Eddy.';
+        
+        // Cette variable contient du texte, c'est en réalité un objet string qui possède plusieurs méthodes et une propriété. 
+
+        // Length(propriété)
+        console.log(phrase.length);
+
+        // indexOf retournera La position de la première lettre de 'Eddy' dans la phrase
+        console.log(phrase.indexOf('Eddy'));
+
+        // substr permet de récupérer le morceaux d'une chaine de caractère, il prend deux arguments : 1er ou commence la découpe, second : combien de caractères
+
+        phrase = 'Bonjour Pierre comment vas-tu ?';
+        var mot ='Pierre';
+        console.log(phrase.substr(phrase.indexOf('Pierre'),mot.length));
+
+        // https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String/prototype (doc mdn string prototype)
+
+        // toLowerCase minisg / toUpperCase majus
+
+            phrase = 'tout est en minuscule';
+            document.write(phrase.toUpperCase());
+
+            phrase = phrase.toUpperCase();
+
+            console.log(phrase.toLowerCase());
 
 
 
+        /*----------------------------------------------------------
+        ----------------------12 FONCTIONS UTILISATEUR -------------
+        -----------------------------------------------------------*/
 
+        document.write('<h2> 12 - FONCTIONS UTILISATEURS </h2>');
 
+        // Déclaration de focntion par FUNCTION STATEMENT
 
+        function maFonction(){
+            return document.write('<p> Nous avons une journée ensoleillé !</p>');
+        }
+        maFonction();
 
+        // fonction avec argument : L'argurment (dans la parenthèse) est facultatif, il permet d'indiquer que l'appel à la fonction necessite également une information de l'utilisateur . L'argument est définit par un mot clef, et les instructions de la fonction sont censés reprendre ce mot clef pour signifier ce que l'on fait de cette information
+        function direBonjour(prenom){
+            var message = document.write('<p>Bonjour ' + prenom + ', comment vas-tu?</p>');
+            return message;            
+        }
+
+        direBonjour('pren');
+        direBonjour('Chloé');
+
+        function meteo(saison, temperature){
+            return document.write('Nous sommes en ' + saison + ', il fait ' + temperature + ' degré(s)');
+        }
+         meteo('été', 25);   
     </script>
 </html>
 </body>

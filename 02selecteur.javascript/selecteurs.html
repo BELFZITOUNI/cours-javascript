@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Selecteurs JavaScript</title>
+
+    <style>
+    
+    </style>
+
+    <script>
+
+        window.onload = function(){
+
+
+
+            // SELECTION NATURELLE D'UN ID
+            var monId = titre;
+            console.log(monId);
+
+
+            // SELECTION BY ID
+            var monId2 = document.getElementById('titre');
+            console.log(monId2);
+
+
+            // SELECTION BY CLASSNAME
+            var mesClasses = document.getElementsByClassName('avion');
+            // je récupère un ensemble : une collection  html
+            console.log(mesClasses);
+            // je peut atteindre un des éléments de la collection grâce à l'indice [1]
+            console.log(mesClasses[1]);
+            mesClasses[1].innerHTML
+            // innerHTML definit le contenu de la balise 
+            console.log(mesClasses[1].innerHTML);
+            mesClasses[1].innerHTML = 'Nouveau contenu';
+
+            // modifier le contenu du h2 pour marquer 'nouveau titre'        
+            var monId2 = document.getElementById('titre'); 
+            console.log(monId2.innerHTML);
+            monId2.innerHTML = 'Nouveau titre en <a href="#">JS</a>';
+
+
+            // SELECTION  BY TAGNAME
+
+            var mesP = document.getElementsByTagName('p');
+            console.log(mesP);
+            // console.log(mesP[1].innerHTML);
+
+            for(var i=0; i < mesP.length; i++){
+                console.log(mesP[i].innerHTML);
+                mesP[i].style.backgroundColor = 'red';
+            }
+            // Liste des mots clefs avec .style https://www.w3schools.com/jsref/dom_obj_style.asp
+
+
+            // querySelector
+
+            var query = document.querySelector('p');
+            console.log(query);
+
+            var query2 = document.querySelectorAll('.avion');
+            console.log(query2[2]);
+             
+
+        // Exercice: selectionnez airbus 3: modifie son contenu en "mon airbus"
+        // de plus, stylisez cet airbus 3 pour y appliquer un fond bleu, un texte blanc ete gras
+
+        var query3 = document.querySelectorAll('.avion');
+        console.log(query3);
+        console.log(query3[3].innerHTML);
+        query3[2].innerHTML = 'mon airbus a moi';
+        
+        query3[2].style.backgroundColor = 'blue';
+        query3[2].style.color = '#fff';
+        query3[2].style.fontWeight = '700';
+
+        // correction 
+        // var query3 = document.querySelectorAll('div.avion');
+        // console.log(query3[2].innerHTML);
+        // query3[2].innerHTML = 'mon airbus a moi';
+        // query3[2].style.backgroundColor = 'blue';
+        // query3[2].style.color = '#fff';
+        // query3[2].style.fontWeight = '700';
+        // query3[2].style.padding = '20px';
+        
+        
+
+        }// fin de mon window.onload ne pas effacer
+
+    </script>
+
+</head>
+<body>
+    <h2 id="titre">Mon titre de niveau 2</h2>
+
+    <div class="avion">Airbus 1</div>
+    <div class="avion">Airbus 2</div>
+    <div class="avion">Airbus b3</div>
+
+    <p id="first">Paragraphe 1</p>
+    <p>Paragraphe 2</p>
+    <p title="InfopBulle">Paragraphe 3</p>
+    <p class="avion">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos eligendi quis sapiente repellendus, alias debitis quia? Dolor sunt, alias sapiente nisi at natus dignissimos facere architecto inventore nobis ratione ut. Paragraphe 4</p>
+    <p>Paragraphe 5</p>
+    <h2> mon titre de fin </h2>
+
+    
+</body>
+</html>
