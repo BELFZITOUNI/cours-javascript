@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<head>
+        <html lang="fr">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formulaire Contrôle</title>
+    <style>
+    
+    </style>
+</head>
+<body>
+    <form name="formulaire" action="#" method="get">
+        <label for="pseudo">PSEUDO</label>
+        <input type="text" name="pseudo" id="pseudo" placeholder="pseudo">
+        <br>
+        <label for="mdp">Mot de passe</label>
+        <input type="password" name="mdp" id="mdp" placeholder="Mot de passe...">
+        <br>
+        <input type="submit" name="submit" id="submit" value="ok" onclick="resultat();">
+    </form>
+    <script>
+    function resultat(){
+        if(document.formulaire.pseudo.value.length < 5 || document.formulaire.pseudo.value.length > 15){
+            console.log(document.formulaire.pseudo.value);
+            alert('Le pseudo doit comporter entre 5 et 15 caractères');
+            }
+        if(document.formulaire.mdp.value.length < 3 || document.formulaire.mdp.value.length > 15){
+            alert('Le pseudo doit comporter entre 3 et 12 caractères');
+        }
+    }
+    </script>
+</body>
+</html>

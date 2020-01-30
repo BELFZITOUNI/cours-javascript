@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>KeyDown - Jeux</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        div.move{
+            width: 100px;
+            height: 100px;
+            background: pink ;
+            bottom: 2px solid red;
+            padding: 5px;
+            position: relative;
+        }
+    </style>
+</head>
+    <body>
+        <div id="move" class="move">
+            Appuyer sur les fèches directionnelles de votre clavier 
+
+        </div>
+        <script>
+            // Si une touche du clavier est touchée, nous executons une fonction nommée clavier  
+            document.onkeydown = clavier;
+            // document.addEventListener('keydown', clavier);
+
+            function clavier(e){
+
+                var carre = document.getElementById('move');
+
+                if(e.keyCode == '38'){ // 38 correspond à la flèche du haut
+                    carre.style.top = (carre.offsetTop - 10) +"px";  
+                }
+                else if(e.keyCode == '40'){// flèche du bas
+                    carre.style.top = (carre.offsetTop + 10) + 'px';
+                }
+                else if(e.keyCode == '37'){// flèche de gauche
+                    carre.style.left = (carre.offsetLeft - 10) + 'px';
+                }
+                else if(e.keyCode == '39'){// flèche de droite
+                    carre.style.left = (carre.offsetLeft + 10) + 'px';
+                }
+            }
+        </script>
+    </body>
+    </html>

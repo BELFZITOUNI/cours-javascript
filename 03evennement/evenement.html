@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Evénement JavaScript</title>
+
+    <style>
+        #div1{
+            background: purple;
+            color: #fff; 
+            padding: 10px;
+        }
+        #div2{
+            background: rgb(0, 2, 128);
+            color: #fff; 
+            padding: 10px;
+        }
+        #para{
+            background: rgb(0, 128, 28);
+            color: #fff; 
+            padding: 10px;
+        }
+        #div3{
+            background: rgb(126, 128, 0);
+            color: #fff; 
+            padding: 10px;
+        }
+        #div4{
+            background: rgb(0, 128, 85);
+            color: #fff; 
+            padding: 10px;
+        }
+        #prenom{
+            width: 50px,
+        }
+        .clicBouton{
+            background: red; color: #fff; width: 70px;
+        }
+    </style>
+  
+</head>
+    <body>
+        <!-- <h2 onclick="fDiv1();">Click</h2> -->
+        <h2 ondblclick="fDiv1();">Click</h2>
+        <div id="div1">DIV1</div>
+        <h2>Dblclick</h2>
+        <div id="div2">DIV2</div>
+        <h2>Function anonyme</h2>
+        <p id="para">Paragraphe</p>
+        <h2>Survol (Mouseover Mouseout)</h2>
+        <div id="div3">DIV3</div>
+        <h2>DIV4</h2>
+        <div id="div4">MouseOut</div>
+        <h2>FOCUS</h2>
+        <form>
+            <label for="prenom">Veuillez saisir votre prénom</label>
+            <input id="prenom" type="text" name="prenom">
+            <input type="submit" name="submit" id="submit" value="OK">
+        </form>
+
+        <script>      
+
+
+            // Le addEventListener a besoin de deux arguments : 1 - le mot clef correspondant à l'évenement (ici le click) 2 - la FONCTION executée lors de l'évenement (ici la fonction fDiv1)
+
+            // Simple click
+            document.querySelector('#div1').addEventListener('click', fDiv1);
+                
+            function fDiv1(){ alert('Elément est cliquée !');}
+
+            // dblClick
+            document.getElementById('div2').addEventListener('dblclick', fDiv2);
+                
+            function fDiv2(){ alert('Div2 est double cliquée !');}
+            
+            // version avec function anonyme ||Sur ce paragraphe, plutot qu'appeler une fonction existante, nous executons une fonction anonyme au moment du clic 
+            document.querySelector('#para').addEventListener('click', function(){alert('par fonction anonyme');}) // function fDiv3(){ alert('Div1 est cliquée !');}
+                                
+            // version avec la variable
+            var maDiv2 = document.getElementById('div2');
+            maDiv2.addEventListener('dblclick', fDiv2);            
+            function fDiv2(){
+                alert('Div2 est double cliquée !');
+                }
+
+            // version avec mouseover
+            document.querySelector('#div3').addEventListener('mouseover', fDiv3);
+            function fDiv3(){ alert('Div3 survolée!');}
+
+            // exercice version avec mouseout
+            document.querySelector('#div4').addEventListener('mouseout', fDiv4);
+            function fDiv4(){ alert('Div4 n\'est plus survolée!');}
+
+
+            // on peut intéragir sur un autre élément avec la même fonction ici : on intérvient avec fDiv4 sur #div3   
+            // document.querySelector('#div3').addEventListener('mouseout', fDiv4);
+
+
+            // avec le query
+            document.querySelector('#div4').addEventListener('mouseout', fDiv4);
+            function fDiv4(){
+                document.querySelector('#div4').innerHTML = "Div3 n\'est plus survolée";
+            }
+            //  avec le this
+            document.querySelector('#div4').addEventListener('mouseout', fDiv4);
+            function fDiv4(){
+                // this est un mot clef (signifiant l'élément lui même) qui permet de faire référence à l'élément selectionné, l'élément concerné par la fonction.
+                this.innerHTML = "Div3 n\'est plus survolée";
+            }
+
+
+            // focus pour les formulaires 
+            document.querySelector('#prenom').addEventListener('focus', inputFocus);
+            function inputFocus(){
+                // alert('Champ focus');
+                this.style.width ="250px";
+            }
+            document.querySelector('#prenom').addEventListener('blur', inputBlur);
+            function inputBlur(){
+                // alert('Champ blur');
+                this.style.width ="50px";
+            }
+            
+            document.querySelector('#submit').addEventListener('click', inputSubmit);
+            function inputSubmit(event){
+                event.preventDefault();
+                // alert('Formulaire validé');
+                this.classList.add('clicBouton');
+                console.log(document.querySelector('#prenom').value);
+            }
+    
+        </script>
+    
+
+    </body>
+
+</html>
