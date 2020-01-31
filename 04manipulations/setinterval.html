@@ -1,32 +1,27 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <style>
-    #monImage {
-        border: 1px solid gray; 
-        max-width: 300px;
-    }
-    </style>
-</head>
-<body>
-    <img src="imgs/1.jpg" alt="texte alternatif" id="monImage">
-    <script>
-        var img =0;
-        function f(){
-            img +=1;
-            monImage.setAttribut("src", "imgs/" + img + ".jpg");
-            if(img == 6){
-                // clearInterval permet de stopper un setInterval
-            clearInterval(timer)
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Setinterval</title>
+        <style>
+            #monImage{ border: 1px solid grey; max-width: 300px;}
+        </style>
+    </head>
+    <body>
+        <img src="imgs/1.jpg" alt="Texte alt" id="monImage">
+        <script>
+            var img = 0;
+            function f(){
+                img +=1;
+                monImage.setAttribute("src", "imgs/" + img + ".jpg");
+                if(img == 6){
+                    // clearInterval permet de stopper un setInterval
+                    clearInterval(timer)
+                }
             }
-        }
-        // setInterval permet de lancer une fonction tous les XX millième de seconde 
-        var timer = window.setInterval('f()', 1000);
+            // setinterval permet de lancer une fonction tous les X millième de seconde
+            var timer = window.setInterval('f()', 1000);
 
-    </script>
-</body>
+        </script>
+    </body>
 </html>

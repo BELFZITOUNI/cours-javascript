@@ -37,6 +37,12 @@
                -- 4 -- TYPE DE DONNEE
                -- 5 -- CONSTANTE
                -- 6 -- CONCATENATION
+               -- 7 -- OPERATEURS ARITHMETIQUES
+               -- 8 -- CONDITIONS
+               -- 9 -- LES OPERATEUR DE COMPARAISON
+               -- 10 -- LES BOUCLES
+               -- 11 -- FONCTIONS PREDEFINIES
+               -- 12 -- FONCTIONS UTILISATEUR 
         */
 
         /*        
@@ -70,13 +76,13 @@
         // Le mot clé "var" permet de déclarer une variable nomée "maBoite":document
         // Caractères acceptés: de 0 à 9, de A à Z, de a à z, + $ _ mais jamais comme premier ou dernier caractère 
 
-        // Une variable doit d'abord être déclarée:Déclaration  
+        // Une variable doit d'abord être déclarée: Déclaration  
         var maBoite;
         // Nous lui affectons une valeur:Affectation
         maBoite=10;
         document.write(maBoite);
         
-        // Affectation de la valeur via un prompt rempl par l'utilisateur
+        // Affectation de la valeur via un prompt rempli par l'utilisateur
         // Exemple de déclararation et d'affectation dans la même instruction 
         // var sonAge = prompt('Quel est votre age?');
         // document.write(sonAge); 
@@ -104,7 +110,7 @@
         console.log(note_eval);
         note_eval += 2;
         console.log(note_eval);
-
+                    
 
         // Je peut garder une variable sans définir son contenu, mais si je appel à elle, elle sera undefined
         var quelquechose;
@@ -123,34 +129,34 @@
 
         /*        
         ------------------------------------------------------
-        --------------------- 4 TYPE DE DONNEES ----------------
+        --------------------- 4- TYPE DE DONNEES ----------------
         ------------------------------------------------------
         */
 
         document.write('<h2> 4 - TYPES DE DONNEES</h2>');
 
 
-        // Les trois principaux types de données (appelés primitifs) sont les string (chaine de caractère) / number (données numériques) / booléen (true or false:données booléennes vrai ou faux)
+        // Les trois principaux types de données (appelés primitifs) sont les STRING (chaine de caractère) / number (données numériques) / BOOLEEN (true or false:données booléennes vrai ou faux)
 
-        // les string:
+        // 1 - LES STRINGS:
         var monTexte= "Voici une phrase écrite dans un double quote";
 
-        // L'antislash permet d'échapper un caractère dans la string
+                 // L'antislash permet d'échapper un caractère dans la string
         var monTexte2= 'Voici une phrase écrite dans un simple quote aujourd\'hui';
         console.log(monTexte2);
         var monTexte3='55';
 
 
-        // TYPE NUMBER 
+        // 2- TYPE NUMBER 
         var chiffre = 5.5; //L'affectation se fait sans quote 
         var negatif = -10; //  Tous les types d'écriture numériques sont possibles
         var decimal = 5.5;
 
-        // TYPE BOOLEEN : il ne prend que deux valeurs = TRUE ou FALSE
+        // 3- TYPE BOOLEEN : il ne prend que deux valeurs = TRUE ou FALSE
         var choix = true 
         console.log(choix);
 
-        //typeoff permet de vérifier le type d'une variable
+                //typeoff permet de vérifier le type d'une variable
         document.write(typeof(monTexte)+'<br>');
         document.write(typeof(chiffre)+'<br>');
         document.write(typeof(choix)+'<br>');
@@ -179,7 +185,6 @@
         document.write(BOUGE_PAS+'<br>');
         // const BOUGE_PAS = 'nouveau contenu'; induira des messages d'erreur que d'essayer de redéfinir une constante
 
-
        
         /*        
         ------------------------------------------------------
@@ -193,7 +198,7 @@
 
         var prenom = 'BRUCE', nom = 'Wayne';
         // Ecrire dans le document "bruce wayne"
-        document.write(prenom +' '+ nom +'<br>');
+        document.write(prenom + ' ' + nom +'<br>');
         document.write('<strong>'+prenom+'</strong> '+nom);
 
         // Réaliser un prompt demandant son âge à l'utilisateur, récuperer cette donnée et l'utiliser pour afficher: VOUS AVEZ xx ans !
