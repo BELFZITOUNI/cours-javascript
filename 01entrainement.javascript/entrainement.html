@@ -17,16 +17,20 @@
         -------------1 COMMENTAIRES, SYNTAXE -----------------
         ------------------------------------------------------
         */
+        // La méthode document.write () ne doit être utilisée que pour les tests.
         //document.write('mon premier messag');
         document.write('<h1>Entrainement JavaScript</h1>');
         document.write('<h2>1 -  Commentaires, SYNTAXE</h2><p>Voir code source</p>');
+
         // Toutes les instructions javascript se finissent par ";"
 
-        // J'effectue un commentaire de ligne avec double slash
-        // commentaires pour la ligne
+        // J'effectue un commentaire de ligne avec double slash  ''//''  commentaires pour la ligne
+        
 
         /*
-        commentaire pour un bloc de texte
+        commentaire pour 
+        un bloc de texte
+         ou multi-ligne
         */
 
         /*
@@ -56,7 +60,7 @@
         console.info('Informations à envoyé dans la console');
         console.log('La même chose que info (petite icone info en moins)');
 
-        // Boites de dialogue
+        // Boite = de dialogue
         // Boite Alert
         // alert('Ceci est une message alert');
         // Confirm
@@ -64,7 +68,17 @@
         // Prompt permet de récupérer les données de l'utilisateur
         // prompt('voici le prompt');
 
-         /*        
+        /*         Possibilités d'affichage JavaScript
+         JavaScript peut "afficher" les données de différentes manières:
+
+         Écriture dans un élément HTML, à l'aide de "innerHTML."
+         Écriture dans la sortie HTML à l'aide de "document.write()."
+         Écrire dans une boîte d'alerte, en utilisant "window.alert()."
+         Écriture dans la console du navigateur, à l'aide de "console.log()."
+        */          
+
+
+        /*        
         ------------------------------------------------------
         --------------------- 3 VARIABLE ----------------
         ------------------------------------------------------
@@ -112,7 +126,7 @@
         console.log(note_eval);
                     
 
-        // Je peut garder une variable sans définir son contenu, mais si je appel à elle, elle sera undefined
+        // Je peut garder une variable sans définir son contenu, mais si je fait appel à elle, elle sera undefined
         var quelquechose;
         console.log(quelquechose);
         // Si je fait appel à une variable qui n'a pas été déclarée, j'aurai un message d'erreur, c'est à éviter
@@ -133,16 +147,28 @@
         ------------------------------------------------------
         */
 
+        /* 
+            7 TYPES DE VALEURS DIFFERENTES:         
+            
+                * String ou « chaine de caractères » en français ;
+                * Number ou « nombre » en français ;
+                * Boolean ou « booléen » en français ;
+                * Null ou « nul / vide » en français;
+                * Undefined ou « indéfini » en français ;
+                * Symbol ou « symbole » en français ;
+                * Object ou « objet » en français ;
+         */ 
+
         document.write('<h2> 4 - TYPES DE DONNEES</h2>');
 
 
-        // Les trois principaux types de données (appelés primitifs) sont les STRING (chaine de caractère) / number (données numériques) / BOOLEEN (true or false:données booléennes vrai ou faux)
+        // Les trois principaux types de données (appelés primitifs) sont les STRING (chaine de caractère) / NUMBER (données numériques) / BOOLEEN (true or false:données booléennes vrai ou faux)
 
         // 1 - LES STRINGS:
         var monTexte= "Voici une phrase écrite dans un double quote";
 
                  // L'antislash permet d'échapper un caractère dans la string
-        var monTexte2= 'Voici une phrase écrite dans un simple quote aujourd\'hui';
+        var monTexte2= 'Voici une phrase écrite dans un simple quote aujourd\'hui'; 
         console.log(monTexte2);
         var monTexte3='55';
 
@@ -261,11 +287,9 @@
         var cube = proposition*proposition*proposition;
         alert('Pour '+proposition + 'Le carré est : ' + carre + ', le cube est : ' + cube);
 
+        // Une bonne pratique consiste à mettre des espaces autour des opérateurs (= + - * /):  ex: var x = y + z;
 
-
-
-
-        /*---------------------------------------------------
+       /*---------------------------------------------------
         -------------------8 CONDITIONS-----------------
         ----------------------------------------------------*/
 
@@ -296,7 +320,7 @@
             document.write('Une condition au moins, n\'est pas remplie <br>');
         }
 
-
+        
         // if et OR 
         if(a > b || b > c){
             document.write('ok au moins une des conditions est valable <br>');
@@ -338,7 +362,7 @@
 
         var total = chiffre4 + chiffre5;
         console.log(total);
-
+        // ParseInt et ToString 
         //le parsInt est une methode me permettant de transformer un string en number
 
         console.log(typeof(chiffre5));
@@ -354,7 +378,7 @@
         // equivalent au parseInt pour les decimaux : parsefloat()
         console.log(parseFloat(chiffre8));
         
-        // il existe une methode pour passer un number en string c'est la méthode toString()
+        // il existe une methode pour passer un NUMBER en STRING c'est la méthode "toString()"
         var chiffre9 = chiffre4.toString();
         console.log(typeof(chiffre9));
 
@@ -402,6 +426,7 @@
         ----------------------------------------------------*/
 
         document.write('<h2> 9- LES OPERATEUR DE COMPARAISON </h2>');
+
         /*
         Exemple : var var1 = 3, var2 = 4;
         Egal (==) va renvoyer true si les opérandes sont égales en valeur
@@ -416,15 +441,19 @@
         
         Différent de (!==) renvoyer TRUE si les operandes NE SONT PAS DE MEME TYPE ET / OU PAS EGALES
         Supérier à (>) renvoyer TRUE si l'operande de gauche est plus grande que l'operande de droite 
-        Inférieur à (<) renvoyer TRUE si l'operande de gauche est plus petite del'opreande de droite
+        Inférieur à (<) renvoyer TRUE si l'operande de gauche est plus petite de l'opreande de droite
         Supérieur ou égale (>=) renvoyer TRUE si l'operande de gauche est supérieur OU égale à celle de droite 
         Inférieur ou égale (<=) renvoyer TRUE si l'operande de gauche est inférieur OU égale à celle de droite 
-        CONCLUSION : une condition renvoie toujours TRUE ou FALSE et les instruction de la condition ne seront executées QUE si la valeur de retour en ligne est TRUE
+
+        CONCLUSION : une CONDITION renvoie toujours TRUE ou FALSE et les instruction de la condition ne seront executées QUE si la valeur de retour en ligne est TRUE
+
         Javascript compte 3  operateurs logique 
                 - AND --> &&
                 - OR --> ||
                 - NOT --> !
-       L'opérateur AND 
+
+       L'opérateur AND:
+
         Il s'écrit &&. Il evalue le résultat en TRUE si les deux expressions sont TRUE.
         Si l'une des expressions est traitée en FALSE, alors le résultat sera false.
             true && true => TRUE
@@ -432,15 +461,17 @@
             false && true => FALSE
             false && false => FALSE
             
-        L'opérateur OR
-        Il s'écrit ||. Il evalue le résultat en TRUE si les deux expressions sont TRUE.
-        Si l'une des expressions est traitée en false, alors le résultat sera false.
+        L'opérateur OR:
+
+        Il s'écrit ||. Il evalue le résultat en TRUE si l'une ou lautre ou si les deux expressions sont TRUE.
+        Si les deux expressions est traitée en false, alors le résultat sera false.
             true || true => TRUE
             false || true => TRUE
             true || false => TRUE
             false || false => FALSE
-        L'opérateur NOT (L'inverse de)
-        Il s'écrit ||. Il transforme ce qui est TRUE en FALSE, e ce qui est FALSE en TRUE.
+
+        L'opérateur NOT: (L'inverse de)
+        Il s'écrit !   Il transforme ce qui est TRUE en FALSE, et vice vera ce qui est FALSE en TRUE.
            
             !true => FALSE
             !false => TRUE
@@ -503,7 +534,7 @@
 
         // https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String/prototype (doc mdn string prototype)
 
-        // toLowerCase minisg / toUpperCase majus
+        // toLowerCase minis.cule / toUpperCase majuscule
 
             phrase = 'tout est en minuscule';
             document.write(phrase.toUpperCase());
