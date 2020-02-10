@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Selecteurs Jquery</title>
+    <style>
+        .maClasse{
+            color: blue;
+            text-decoration: underline;
+            background: skyblue;
+        }
+    </style>
+</head>
+    <body>
+        <h1>Titre H1</h1>
+
+        <p>Paragraphe 1</p>
+        <p>Paragraphe 2</p>
+        <p>Paragraphe 3</p>
+        <p>Paragraphe 4</p>
+
+        <div>DIV1</div>
+        <div class="select">DIV2</div>
+        <nav class="select">NAV1</nav>
+        
+        <span>Span1</span>
+        <span>Span2</span>
+        <span class="fakeClass">Span3</span>
+
+        <figure>
+            <img src="../img/b.jpg" alt="Le Petit chat" style="width: 200px;">
+            <figcaption></figcaption>
+        </figure>
+
+        <script src="../source/jquery-3.4.1.js"></script>        
+        <script>            
+            //console.log(document.getElementsByTagName('h1'));
+            // console.log(document.querySelector('h1').innerHTML);
+
+            //La fonction query $ est l'équivalent d'un document .querySelectorAll()
+            //La methode eq() permet de selectionner en jquery un indice d'une collection d'objet 
+            //La methode .html() remplace innerHTML pour recuperer ou redefinir un contenu de balise
+            console.log($('h1').eq(0).html);
+            //Pour le redefinir:
+                $('h1').eq(0).html('<a href="#">Mon titre via Jquery</a>');
+
+            //Redefinir ou recuperer le contenu texte
+                $('h1').eq(0).text('interpretation du contenu en texte seulement');
+            console.log($('h1').eq(0).text());
+
+            console.log($('p').eq(2).text());
+
+                $('p').html('Hy Zit');
+
+            var maVariable = $('p').eq(0).html();
+            console.log(maVariable);
+
+            //Plutôt que de remplacer le texte d'une balise, nous pouvons choisir de rjaouter du texte. Aussi nous allons devoir choisir de le rajouter avant, ou apres
+
+                $('p').eq(1).append('<span style="color: purple;">Après</span>');
+                $('p').eq(2).prepend('Avant ');
+
+            //Methode .css() applique des changements CSS en remplacement de .style (".css")
+            //Apliquer un seul changement 
+                $('p').css("color","red");
+                $('h1').css("color","green");
+                $('body').css("background","lightgrey");
+
+            //Appliquer plusieurs changement
+                $('p').css({
+                    'color':'red', 
+                    'font-weight': 'bold', 
+                    'margin' : '10px',
+                });
+            
+            // Selectionner les div, leur donner un contour rouge
+                $('div').css('border', '1px solid red');
+
+            //Selectionner les éléments qui ont la classe select pour leur apppliquer une couleur de fond blue et un texte blanc
+                $('.select').css({'background': 'blue', 'color': 'white'});
+            
+            //Selectionner les trois éléments pour les faire précéder leur contenu d'un tiret '- '
+                $('div, .select').prepend('- ');
+
+            ///Manipulations de classes (addClass()), removeClass(), toggleClass(), hasClass(),
+
+            console.log($('span').eq(2).text());
+                $('span').eq(2).addClass('maClasse');
+
+            // removeClass() retire une class existante à un élément
+                $('span').eq(3).removeClass('fakeClass');
+
+            //retirer la .maClasse au span2
+                $('span').eq(2).removeClass('maClasse');
+
+            //Manipulation d'attribut (attr(), removeAttr())
+            
+            //attr() qui établit un nouvel attribut
+                $('div').eq(1).attr("title","Hy");
+
+            //.removeAttr qui enlève un attribut
+                $('div').eq(1).removeAttr("title");
+
+            // retirez svp la class= "" maintenant vide de votre span2
+                $('span').eq(2).removeAttr("class");
+
+            //2ème écriture avec plusieurs occurence 
+                $('span:eq(2), span:eq(3)').removeAttr("class");
+
+            //Parents Enfants
+            //En selectionnant le parent (figure) je cherche a toucher un enfant (img) pour lui appliquer un attribut title
+                $('figure').find('img').attr("title","Petit Chat");
+                console.log($('figure').find('img'));
+
+            // En selectionnant un enfant je vais essayer d'atteindre le parent.
+                $('img').parent().css("border", "2px solid red");
+            //.parent() va chercher le parent naturel, si je demande .parent().parent() il va me chercher le parent du parent (ici le body)                  
+                $('img').parent().parent().css("border", "2px solid red");
+
+            // Exercice : le but sera de récuperer l'attribut de alt d'img dans une variablev; demander en jquery a ce que cette variable s'affiche dans le figcaption: 
+
+                //Console.log() présent pour verifier tout de suite si je parviens a recuperer le contenu de alt
+                console.log($('img').attr('alt'));
+
+                // Une fois certains que je parviens à récupérer le contenu souhaité, j'affecte dans ce contenu dans une variable (pas obligatoire mais plus simple à manipuler)
+                var monAlt = $('img').attr('alt');
+
+                // Je vérifie que ma variable contient bien le alt
+                console.log(monAlt);
+
+                //Je selectionne ma légende (figcaption) pour remplir la balise avec ma variable ( le contenu du alt)
+                $('figcaption').html(monAlt);
+
+                // Le tout peut aussi se resoudre en une ligne: 
+                //$('figcaption').html($('img').attr('alt'));
+
+        </script>
+    </body>
+</html>
