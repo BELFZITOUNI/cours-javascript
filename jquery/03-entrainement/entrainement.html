@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Entrainement Jquery</title>
+
+    <style>
+        h2{ 
+                border: 1px solid gray;
+                margin: 0;
+                padding: 5px;
+                z-index: 100;
+            }
+            h2+div{
+                background: gray;
+                height: 150px;
+            }
+
+        #cube{
+            width: 100px;
+            height: 100px;
+            background: blue;
+            position: relative;
+        }     
+    </style>
+
+</head>
+
+<body>
+    <div id="div1">Contenu de ma div</div>
+    <button id="b1" style='display:none'>Show</button>
+    <button id="b2">Hide</button>
+    <button id="b3">Toogle</button>
+    <hr>
+
+    <div id="div2" style='display:none'>
+        <p>Contenu de ma div2
+            <img src="../img/b.jpg" alt="petit chat" style="">
+        </p>
+    </div>
+
+    <button id="b4">FadeIn</button>
+    <button id="b5">FadeOut</button>
+    <button id="b6">FadeToggle</button>
+    <button id="b7">FadeTo</button>
+
+    <h2 id="titre1">Titre 1</h2>    
+    <div id="contenu1" style="display:none">Contenu 1</div>
+    
+    <h2 id="titre2">Titre 2</h2>
+    <div id="contenu2">Contenu 2</div>
+
+    <h2 id="titre3">Titre 3</h2>
+    <div id="contenu3">Contenu 3</div>
+    <hr>
+    <div id="cube"></div>
+
+
+    <script src="../source/jquery-3.4.1.js"></script>
+
+    <script>
+        // La méthode show() montre un élément si celui ci est display none (style="display-none;")
+        $(function () {
+            $('#b1').click(function(){
+                $('#div1').show();
+                $('#b1').hide();
+                $('#b2').show();
+            });
+        });
+
+            //Viser le b2 pour qu'il cache la div si elle est visible
+            $('#b2').click(function () {
+            $('#div1').show();
+            $('#b1').hide();
+            $('#b1').show();
+            });
+            //Toggle 
+            $('#b3').click(function(){
+                $('#div1').toggle(1000);
+            });
+
+            //fadeToggle / fadeIn / faeOut
+                //FADEIN
+                $('#b4').click(function(){
+                    $('#div2').fadeIn(2000);
+                });
+
+                // créer un fadeOut de div 2 en cliquant sur le #b5
+                // FADEOUT
+                $('#b5').click(function () {
+                    $('#div2').fadeOut(2000, function () {
+                        $('#b5').html('terminé');
+                    });
+                });
+                
+                //Le FADETOGGLE
+                $('#b6').click(function () {
+                    $('#div2').fadeToggle(2000, function(){
+                        alert('fadeToggle terminé')
+                    });
+                });
+
+                //FADETO
+                $('#b7').click(function(){
+                    $('#div2').fadeTo(2000, 0.5, function(){
+                        alert('fadeTo terminé!');
+                    });
+                });
+
+            // effet slide
+
+                // slideDown
+                $('#titre1').click(function () {
+                    $('#contenu1').slideDown('slow', function(){
+                        alert('fini');
+                    });
+                });
+                //slideUp
+                $('#titre2').click(function () {
+                    $('#contenu2').slideUp('slow');
+                });
+                //slideToggle
+                $('#titre3').click(function(){
+                    $('#contenu3').slideToggle();
+                });
+
+                //animate()
+                $('#cube').on('click', function(){
+                    $(this).animate({'width':'200px', 'height':'80px', 'left': '100px'
+                    });
+                });
+
+    </script>
+</body>
+
+</html>

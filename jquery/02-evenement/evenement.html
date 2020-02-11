@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Selecteurs Jquery</title>
+
+    <style>
+        .maClasse {
+            color: blue;
+            text-decoration: underline;
+            background: skyblue;
+        }
+        .maClass {
+            background: dodgerblue;
+            color: #fff;
+            border: 1px solid grey;
+        }
+    </style>
+
+    
+
+</head>
+
+<body>
+    <h1 class="maClass">Evenements</h1>
+
+    <main>
+        <article>
+            <p>Mon paragraphe</p>
+        </article>        
+    </main>
+
+        <button id="button1">Click</button>
+        <button id="button2">Bouton 2</button>
+        <button id="button3">Bouton 3</button>
+        <button id="button4">Bouton 4</button>
+        <button id="button5">toogleClass</button>
+
+    <script src="../source/jquery-3.4.1.js"></script>
+
+    <script>
+        
+        $(function(){    
+                $('h1').append(' JavaScript');
+
+                $("#button1").click(function(){
+                    //faire qu'au clic le texte h1 se souligne
+                    $('h1').css("text-decoration", "underline");
+                });
+
+            //un double clic sur le boutron 2 engendre un changement de couleur de body
+                $("#button2").dblclick(function () {
+                    //faire qu'au clic le texte h1 se souligne
+                    $('body').css({"background-color": "lightgrey", "font-family":"sans-serif"});
+
+                    //le mot clef "this"lui même se réfère a la selection active: ($('#button2'))
+                    $(this).css("display","none");
+                });
+        
+
+                $('#button3').mouseenter(function(){
+                    $('main').addClass('maClass');
+                });
+                
+            // $('#button3').mouseleave();
+            //     $('main').removeClass('maClass');
+            //    
+                
+        
+            // $('#button3').hover(
+            //     function(){('main').addClass{'maClass'}},
+            //     function('main').removeClass{'maClass'};
+            //     );
+
+
+            // La methode .hover( joue le role cumulé de mouseenter() et mouseleave() à travers deux fonctions, La première s'execute au survol, la seconde à la fin du survol de l'élément visé)
+                $('#button3').hover(
+                    function () {
+                        $('main').addClass("maClass");
+                    }, 
+                    function () {
+                        $('main').removeClass("maClass");
+                    }
+                );
+                //toogleClass "interrupteur de class"
+                $('#button5').click(function(){
+                    $('h1').toogleClass('maClass');
+                });
+
+                    $('#button4').click(function(){
+                        $('p').toggle(1000);
+                    });
+
+
+                //Méthode .on()
+                    $('p').on("click", function(){
+                        $(this).append(' clic');
+                    });
+                    $('p').on("mouseenter", function(){
+                        $(this).append(' clic');
+                    });
+
+                //contrainte: selectionner article, puis vous allez donner un contour à main
+                     $('article').parent().css("border", "1px solid red");
+
+                     //retirons les marges du paragraphe à partir de sa selection de son parent: article
+                     $('article').find('p').css('margin','0');                    
+
+        });
+    </script>    
+</body>
+</html>

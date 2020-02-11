@@ -57,13 +57,13 @@
             var maVariable = $('p').eq(0).html();
             console.log(maVariable);
 
-            //Plutôt que de remplacer le texte d'une balise, nous pouvons choisir de rjaouter du texte. Aussi nous allons devoir choisir de le rajouter avant, ou apres
+            //Plutôt que de remplacer le texte d'une balise, nous pouvons choisir de rajouter du texte. Aussi nous allons devoir choisir de le rajouter avant, ou apres
 
                 $('p').eq(1).append('<span style="color: purple;">Après</span>');
                 $('p').eq(2).prepend('Avant ');
 
             //Methode .css() applique des changements CSS en remplacement de .style (".css")
-            //Apliquer un seul changement 
+            //Appliquer un seul changement 
                 $('p').css("color","red");
                 $('h1').css("color","green");
                 $('body').css("background","lightgrey");
