@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculatrice</title>
+</head>
+<body>
+    <p style="text-align: center;"> 
+        <span id="afficher">AFFICHER</span> 
+        <span>/</span> 
+        <span id="cacher">CACHER</span>
+        <span id="toggle">Les deux</span> 
+    </p>
+    <div id="conteneeur" style="background: dodgerblue; width: 80%; height: 200px; margin: 0 auto; text-align: center;padding-top: 80px;">
+    <form action="#" method="get" name="formulaire" placeholder="veuillez saisir un nombre">
+        <input type="number" name="saisie1" id="saisie1">
+        <select name="operateur" id="operateur">
+            <option value="">+</option>    
+            <option value="">-</option>    
+            <option value="">/</option>    
+            <option value="">*</option>    
+        </select>
+        <input type="number" name="saisie2" id="saisie2">
+        <input type="submit" name="bouton"  id="bouton" value= Calculez>
+    </form>
+</div>
+
+    <script src="../source/jquery-3.4.1.js"></script>
+    <script>
+        $(function(){
+            function calcul(event){
+                event.preventDefault();//sa viens annuler le chargement de la page du formulaire
+                //console.log('ça marche');
+                var saisie1 = $('#saisie1').val();
+                //console.log(saisie1);
+
+                var saisie2 = $('#saisie2').val();
+                //console.log(saisie2);
+
+                var operateur = $('#operateur').val();
+                //console.log(operateur);
+                var resultat
+
+                if(operateur == '+'){
+                 resultat = parseFloat(saisie1) + parseFloat(saisie2);
+                 console.log(resultat);
+                }
+                if(operateur == '-'){
+                    resultat = (saisie1 - saisie2);
+                    console.log(resultat);
+                }
+                if (operateur == '/') {
+                    resultat = (saisie1 / saisie2);
+                    console.log(resultat);
+                }
+                if (operateur == '*') {
+                    resultat = (saisie1 * saisie2);
+                    console.log(resultat);
+                }
+                alert(saisie1 + operateur + saisie2 + '=' + resultat);
+            };
+
+            $('#bouton').click(calcul);
+
+            $('#afficher').click(function(){
+                $('#conteneur').slideDown();
+            });
+            $('#cacher').click(function(){
+                $('#conteneur').slideUp();
+            });
+            $('#toggle').click(function(){
+                $('#conteneur').slideToggle();
+            });
+
+
+
+        });
+    </script>
+</body>
+</html>

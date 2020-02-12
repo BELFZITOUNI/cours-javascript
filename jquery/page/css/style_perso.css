@@ -1,0 +1,20 @@
+/* feuille de style pour ma page index dans le dossier page  */
+
+.contour {
+    border: 2px solid rgb(235, 163, 163);
+}
+
+.bleu {
+    background-color: lightskyblue;
+}
+
+.vert {
+    background-color: lightgreen;
+}
+
+.jaune {
+    background-color: #f1f864;
+}
+.violet {
+    background-color: #c4c1e0;
+}
