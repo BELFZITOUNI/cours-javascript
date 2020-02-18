@@ -88,7 +88,10 @@
                 // console.log(saisie2);
                 var operateur = $('#operateur').val();
                 // console.log(operateur);
+                var submit = $('#bouton').val();
+                console.log(submit);
 
+                
                 if (operateur == '+') {
                     resultat = parseInt(saisie1) + parseInt(saisie2);
                     console.log(resultat);
@@ -117,7 +120,7 @@
             });
             $('#toggle').click(function () {
                 $('#conteneur').slideToggle();
-            })
+            });
         });
     </script>
 

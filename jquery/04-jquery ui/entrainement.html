@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrainement JQuery UI</title>
+    <!-- LE CSS DE JQUERY UI -->
+    <link rel="stylesheet" href="jquery-ui.css">
+    <style>
+        .nouvelleClass {
+            font-size: 30px;
+            color: skyblue;
+        }
+
+        .animation {
+            width: 500px;
+            height: 80px;
+            background: grey;
+            color: #fff;
+            text-align: center;
+            line-height: 80px;
+        }
+
+        .effet {
+            height: 100px;
+            width: 100px;
+            background: palegreen;
+        }
+
+        .ui-corner-top {
+            border-radius: 0;
+        }
+
+        .ui-tabs .ui-tabs-nav li.ui-tabs-active {
+            background: tomato;
+            border: 1px solid green;
+        }
+
+        /* DROPPABLE */
+        #joueur {
+            width: 50%;
+            border: 2px solid grey;
+            /* flex-direction: row; */
+        }
+
+        #adversaire {
+            width: 200px;
+            height: 200px;
+            border: 2px solid black;
+            /* flex-direction: row; */
+        }
+        /* CSS MATIC.FR */
+        #resizable{
+            border-radius: 0px 76px 0px 76px;
+-moz-border-radius: 0px 76px 0px 76px;
+-webkit-border-radius: 0px 76px 0px 76px;
+border: 0px solid #000000;
+background: paleturquoise;
+height: 200px;
+width: 200px;
+-webkit-box-shadow: 13px 10px 67px 18px rgba(0,0,0,0.75);
+-moz-box-shadow: 13px 10px 67px 18px rgba(0,0,0,0.75);
+box-shadow: 13px 10px 67px 18px rgba(0,0,0,0.75);
+        }
+        .monHelper { border: 1px dotted red; background: rgba(255, 0, 0, 0.1); }
+        .ui-resizable-ghost { border: 1px dotted gray; }
+
+        /* Classe du parent (la liste: ol) */
+        .ui-selectable{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* SELECTED */
+        /* Classe de l'élement selectionnable par defaut */
+        .ui-selectee{
+            background: grey;
+            color: #fff;
+            padding: 5px 10px;
+            border: 1px solid black;
+            width: 150px;
+            text-align: center;
+        }
+        /* Classe de l'élement en train de fois cliqué */
+        .ui-selecting{
+            background:blue;
+        }
+        /* Classe de l'élement une fois cliqué */
+        .ui-selected{
+            background: #222;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="accordion">
+        <h3>Section 1</h3>
+        <div>
+            <p>
+                Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
+                ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
+                amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
+                odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+            </p>
+        </div>
+        <h3>Section 2</h3>
+        <div>
+            <p>
+                Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
+                purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
+                velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
+                suscipit faucibus urna.
+            </p>
+        </div>
+        <h3>Section 3</h3>
+        <div>
+            <p>
+                Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
+                Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
+                ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
+                lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
+            </p>
+            <ul>
+                <li>List item one</li>
+                <li>List item two</li>
+                <li>List item three</li>
+            </ul>
+        </div>
+        <h3>Section 4</h3>
+        <div>
+            <p>
+                Cras dictum. Pellentesque habitant morbi tristique senectus et netus
+                et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
+                faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
+                mauris vel est.
+            </p>
+            <p>
+                Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
+                Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
+                inceptos himenaeos.
+            </p>
+        </div>
+    </div>
+    <hr>
+    <!-- "vh" Viewport height heigth: 1vh "1centième" "1%" du navigateur et width: 50vw "50viewmport width" -->
+    <div style="border: 1px solid red; height: 100vh;">
+        <img id="pierre" src="../images/cheval_09.jpg" alt="cheval1" id="image9">
+        <img id="ciseaux" src="../images/cheval_06.jpg" alt="cheval1" id="image6">
+        <img id="feuille" src="../images/cheval_04.jpg" alt="cheval1" id="image4">
+        <img src="../images/cheval_07.jpg" alt="cheval1" id="image7">
+        <img src="../images/cheval_08.jpg" alt="cheval1" id="image8">
+        <img src="../images/cheval_02.jpg" alt="cheval1" id="image2">
+        <img src="../images/cheval_01.jpg" alt="cheval1" id="image1">
+        <img src="../images/cheval_03.jpg" alt="cheval1" id="image3">
+        <img src="../images/cheval_05.jpg" alt="cheval1" id="image5">
+    </div>
+
+
+    <h3 id="ajoutClasse">Ajout de classse Jquery-ui</h3>
+
+    <div class="animation">
+        Voici le contenu de ma div à animer
+    </div>
+
+    <div class="effet"></div>
+    <button id="boot_effet">Clic pour l'effet</button>
+
+
+    <h4>Tabs</h4>
+
+    <div id="tabs">
+        <ul id="">
+            <li><a href="#tabs-1">Nunc tincidunt</a></li>
+            <li><a href="#tabs-2">Proin dolor</a></li>
+            <li><a href="#tabs-3">Aenean lacinia</a></li>
+        </ul>
+        <div id="tabs-1">
+            <p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec
+                sollicitudin mi
+                sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus
+                auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis
+                orci.
+                Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede
+                varius
+                sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.
+            </p>
+        </div>
+    </div>
+
+    <hr>
+    <div style="border: 5px solid blue; height: 80vh; display: flex; flex-wrap: wrap; justify-content: space-between;"
+        class="drop">
+
+        <h4 style="width: 100%">Droppable()</h4>
+
+        <div id="joueur">
+            <img id="pierre" src="../images/pierre.png" alt="pierre">
+            <img id="ciseaux" src="../images/ciseaux.jpg" alt="ciseaux">
+            <img id="feuille" src="../images/feuille.jpg" alt="feuille">
+        </div>
+
+        <div id="adversaire">
+            <img id="img_adv" src="../images/ciseaux.jpg" alt="ciseaux">
+        </div>
+    </div>
+
+    <!-- RESIZABLE -->
+    <div id="parent" style="border: 5px solid green; height: 80vh;">
+        <h4>Resizable</h4>
+        
+        <div id="resizable">
+            <h5>Redimenssionez-moi</h5>
+        </div>
+    </div>
+<hr>
+
+    <h4>SELECTABLE</h4>
+    
+    <ol id="selectable" >
+        <li>Elément 1</li>
+        <li>Elément 2</li>
+        <li>Elément 3</li>
+    </ol>
+    <hr>
+    <h4>Date picker</h4>
+    <!-- Le date picker vient en remplacemenet du "<input type="date">" tant que tous les navigateurs ne permettent pas leur utilisation -->
+    <input type="text" id="input" placeholder="choisissez une date">
+
+<hr>
+
+    <h4>Autocomplete</h4>
+    <input type="text" id="autocomplete">
+
+
+
+
+
+
+
+
+
+    
+
+    <!-- Script de JQuery -->
+    <script src="../source/jquery-3.4.1.js"></script>
+    <!-- Script de JQuery-ui -->
+    <script src="jquery-ui.js"></script>
+
+
+    <script>
+        $(function () {
+            $("#accordion").accordion();
+
+            $("#ajoutClasse").click(function () {
+                $(this).addClass("nouvelleClass", 2000);
+            });
+
+            $('.animation').click(function () {
+
+                var hauteur = '150px';
+
+                $(this).animate({
+                    width: '400px',
+                    height: '150px',
+                    color: 'black',
+                    backgroundColor: 'blue',
+                    lineHeight: hauteur
+                }, 2000);
+            });
+
+            //Placer un toogle pour qu'un clic sur le bouton entraine l'apparition et la disparation du carré, cette disparition doit avoir lieu avec un effet "bounce"
+
+            $('#boot_effet').click(function () {
+                // effect() permet de placer un moment d'un évenement
+                $('.effet').effect("scale", "slow");
+                //toogle() peut se voir un effet qui appliquera lors des apparitions/disparations
+                $('.effet').toggle("bounce", "slow");
+
+            });
+            //mise en place de tabs
+            $("#tabs").tabs({
+                event: "mouseover"
+            });
+
+            //Rendre les images draggable
+            $('#image1').draggable({ snap: "#image2, #image4", snapmode: 'outer' });
+            $('#image2').draggable({ snap: "#image1, #image3, #image5", snapmode: 'outer' });
+            $('#image3').draggable({ snap: "#image2, #image6", snapmode: 'outer' });
+            $('#image4').draggable({ snap: "#image1, #image5, #image7", snapmode: 'outer' });
+            $('#image5').draggable({ snap: "#image2, #image4, #image6, #image8", snapmode: 'outer' });
+            $('#image6').draggable({ snap: "#image3, #image5, #image9", snapmode: 'outer' });
+            $('#image7').draggable({ snap: "#image4, #image8", snapmode: 'outer' });
+            $('#image8').draggable({ snap: "#image7, #image9, #image5", snapmode: 'outer' });
+            $('#image9').draggable({ snap: "#image8, #image6", snapmode: 'outer' });
+
+            //Changer le curseur : mousedown bouton de souris cliqué, mouseup bouton de souris relacher
+            $('img').mousedown(function () {
+                $(this).css('cursor', 'grabbing');
+            });
+            $('img').mouseup(function () {
+                $(this).css('cursor', 'grab');
+            });
+
+            //Droppable
+            $('#pierre, #ciseaux, #feuille').draggable({
+                //retour a sa place s'ils ne sont pas valide
+                revert: "invalid"
+            });
+
+            $('#adversaire').droppable({
+                accept: "#feuille, #pierre",
+                drop: function (evenement, element) {
+                    // alert('J\'accepte ces éléments');
+                    if(element.draggable.is("#pierre")){
+                        alert('Gagné');
+                        $(this).css("background","lime");
+                        $('#ecran').html('<img src="../image/cheval_01.jpg" alt="cheval">');
+                    }else{
+                        alert('Perdu');
+                        $(this).css("background", "orange");
+                    }
+                }
+            });
+
+
+            //mettre en place un droppable sur le cadre gris (#joueur) pour pouvoir y renvoyer feuille et pierre
+            $('#joueur').droppable({
+                accept: "#feuille, #ciseaux, #pierre",
+                drop: function(){
+                    $(this).css("background","lightgrey");
+                }
+            });
+
+            /*function direBonjour(prenom){
+                document.write('bonjour ' + prenom);
+            }
+
+            direBonjour('Herve');
+            $('#adversaire').
+            */
+
+            //RESIZABLE
+            $("#resizable").resizable({
+                animate: true,
+                containment: "#parent",
+                helper: "monHelper",
+                maxHeight: 550,
+                maxWidth: 650,
+                minHeight: 250,
+                minWidth: 250,
+                aspectRatio: 1 / 1,
+                ghost: true
+            });
+            $("#selectable").selectable({
+                stop: function(){
+                    // alert('Selection effectuée');
+                    console.log($('.ui-selected').text());
+                }
+            });
+
+            //DATE PICKER
+           
+                $("#input").datepicker({
+                    monthNames: ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre"], 
+                    dayNames: ["dimanche", "lundi", "Mardi", "mercredi", "jeudi", "vendredi", "samedi"],
+                    dayNamesMin: ["Di", "Lu", "Ma", "Me", "Je", "Ve", "Sa"],
+                    dateFormat: "dd/mm/yy",
+                    firstDay: 1,
+                });
+
+
+                //Autocomplete
+                var mesTags =[
+                    "Paris",
+                    "Lyon",
+                    "Lille",
+                    "Marseille",
+                    "ice"
+                ]
+                $('#autocomplete').autocomplete({
+                    source: mesTags
+                });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        });
+    </script>
+</body>
+</html>
